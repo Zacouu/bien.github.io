@@ -14,410 +14,547 @@
       --card-bg:rgba(10,18,38,.72); --card-bd:rgba(0, 25, 59, 0.89);
     }
     /* Reset + layout safety */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; min-height: 100dvh; margin: 0; padding: 0; overflow-x: hidden; -webkit-font-smoothing:antialiased; }
-body { font-family: "Instrument Serif", serif; color: var(--white); background: #111; background-image: url('images/bego.webp'); background-size: cover; background-repeat: no-repeat; background-position: center; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; min-height: 100dvh; margin: 0; padding: 0; overflow-x: hidden; -webkit-font-smoothing:antialiased; }
+    body { font-family: "Instrument Serif", serif; color: var(--white); background: #111; background-image: url('images/bego.webp'); background-size: cover; background-repeat: no-repeat; background-position: center; }
 
-/* hide horizontal scrollbars (visual) but keep vertical scroll usable */
-html::-webkit-scrollbar, body::-webkit-scrollbar { height: 0; width: 0; }
-.video-scroll::-webkit-scrollbar { height: 8px; }
-.video-scroll { scrollbar-width: none; -ms-overflow-style: none; }
-.video-scroll::-webkit-scrollbar { display: none; }
+    /*hide horizontal scrollbars (visual) but keep vertical scroll usable */
+    html::-webkit-scrollbar, body::-webkit-scrollbar { height: 0; width: 0; }
+    .video-scroll::-webkit-scrollbar { height: 8px; }
+    .video-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+    .video-scroll::-webkit-scrollbar { display: none; }
 
-/* Ensure images never push layout horizontally */
-img { max-width: 100%; height: auto; display: block; }
+    /* Ensure images never push layout horizontally */
+    img { max-width: 100%; height: auto; display: block; }
 
-.card { min-width:230px; text-align:center; padding:24px 18px; border-radius:16px; background: rgba(0,0,50,0.312); color: #fff; border:2px solid rgba(160,200,255,.08); backdrop-filter: blur(2px); cursor:pointer; transition: transform .12s ease, box-shadow .12s ease; }
-.card:hover { transform: translateY(-3px); box-shadow: 0 0 18px rgba(0,95,75,0.12); }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
-      margin:0; font-family:"Instrument Serif", serif; color:var(--white);
+      margin:0; font-family:"Montserrat", sans-serif; color:var(--white);
 
        /* Background pake gambar */
-      background: url('images/b.webp');
-      background-size: cover;        /* Biar full layar */
-      background-repeat: no-repeat;  /* Biar ga keulang */
-      background-position: center;   /* Posisikan di tengah */
+        background: url('images/bb.webp');
+        background-size: cover;        /* Biar full layar */
+        background-repeat: no-repeat;  /* Biar ga keulang */
+        background-position: center;   /* Posisikan di tengah */
     
-/* Ensure images never push layout horizontally */
-img { max-width: 100%; height: auto; display: block; }
+        /* Ensure images never push layout horizontally */
+        img { max-width: 100%; height: auto; display: block; }
 
 
-/* Standardize anchors/buttons cursor */
-a, button { cursor: pointer; }
+        /* Standardize anchors/buttons cursor */
+        a, button { cursor: pointer; }
 
 
-/* Small fixes for previously invalid rules */
-.grid { display:flex; flex-wrap:wrap; justify-content:center; gap:26px; margin:140px auto 60px; padding:0 18px; max-width:1200px; }
-
-
-.card { min-width:230px; text-align:center; padding:24px 18px; border-radius:16px; background: rgba(0,0,50,0.312); color: #fff; border:2px solid rgba(160,200,255,.08); backdrop-filter: blur(2px); cursor:pointer; transition: transform .12s ease, box-shadow .12s ease; }
-.card:hover { transform: translateY(-3px); box-shadow: 0 0 18px rgba(0,95,75,0.12); }
-
-
-/* popup / xp window */
-.xp { position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(92%,980px); background:#0c1730; border:1px solid #0f356f; border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.7); opacity:0; transition: opacity .18s ease, transform .18s ease; z-index:120; }
-.xp.show { opacity:1; transform: translate(-50%,-50%) scale(1); }
-.xp.hidden { display: none; }
-.xp-title { height:34px; display:flex; align-items:center; justify-content:space-between; padding:0 12px; }
-.xp-body { padding:14px; }
-
-
-/* gallery vertical grid safe */
-.gallery-vertical { display:grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap:12px; max-height:60vh; overflow:auto; padding-right:6px; }
-
-
-/* viewer modal */
-.viewer { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.85); z-index:200; }
-.viewer.show { display:flex; }
-
-
-/* video scroll: keep horizontal scrolling but hide scrollbar and avoid overscroll bounce */
-.video-scroll { display:flex; gap:14px; overflow-x:auto; overflow-y:hidden; padding:10px 6px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
-.video-card { flex: 0 0 auto; width: 280px; border-radius:10px; overflow:hidden; cursor:pointer; border:1px solid var(--card-bd); background:#061025; padding:8px; }
-
-
-/* running line fix — ensure it doesn't cause horizontal overflow */
-.running-line { position: fixed; left:0; right:0; bottom:0; width:100%; box-sizing:border-box; white-space:nowrap; overflow:hidden; background:transparent; z-index:9999; }
-.running-line span { display:inline-block; padding-left:100%; animation: scrollText 30s linear infinite; }
-@keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-
-/* helper to avoid accidental focus scrolling that jumps content */
-:focus { outline: none; }
-
-
-/* responsive tweaks */
-@media (max-width: 768px) { .grid { margin: 100px auto 50px; } .card { min-width: 46%; } }
-@media (max-width: 480px) { .grid { margin-top: 90px; } .card { min-width: 100%; } }
-
-     /* === Popup overrides (smaller + responsive + scrollable content) === */
-  /* higher specificity to override original .xp rules */
-  section.xp {
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: min(92%, 820px) !important;        /* constrain width */
-    max-width: 92vw !important;
-    max-height: 85vh !important;              /* allow vertical scroll inside */
-    overflow: hidden !important;
-    border-radius: 12px !important;
-  }
-  section.xp .xp-body {
-    max-height: calc(85vh - 56px) !important; /* leave room for title bar */
-    overflow: auto !important;
-    padding: 12px !important;
-  }
-
-  html, body {
-  margin:0;
-  padding:0;
-  scroll-behavior:smooth; /* biar halus */
-    overflow-x: hidden; /* cegah scroll horizontal */
+        /* === WORK SECTION === */
+#work {
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #e8f7ee00 0%, #ffffff00 100%);
+  color: #1a1a1a;
+  font-family: "Montserrat", sans-serif;
 }
 
-
-  /* TikTok responsive wrapper (9:16) */
-  .tiktok-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 320px;          /* preview card size on desktop */
-    aspect-ratio: 9 / 16;      /* keep vertical phone aspect */
-    border-radius: 8px;
-    overflow: hidden;
-    background: #071427;       /* fallback bg */
-  }
-  /* Ensure blockquote (embed) fits wrapper */
-  .tiktok-wrapper .tiktok-embed,
-  .tiktok-wrapper blockquote {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    border: none;
-  }
-
-  /* Horizontal scroll styling */
-  .video-scroll { gap: 12px; padding: 10px; -webkit-overflow-scrolling: touch; }
-.thumb {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.06);
-  margin: 6px;
-  transition: filter 0.3s ease; /* efek halus */
-}
-
-.thumb[data-loading="true"] {
-  filter: blur(10px);
-}
-
-.local-thumbs-wrap {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-/* pastikan iframe dari TikTok ikut responsif */
-.tiktok-wrapper iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: none !important;
-}
-
-
-  /* Re-style open-tiktok button area to fit */
-  .open-tiktok { justify-content:center; margin-top:8px; }
-
-  /* Cursor: keep global default but add class for interactive elements */
-  /* Do NOT set body cursor here (original already sets). We will toggle class on hover via JS */
-  .interactive-cursor {
-    cursor: url('images/link_select.cur') 0 0, pointer !important;
-  }
-
-  /* Make popup close button more clickable on small screens */
-  section.xp .xp-close { width:28px; height:28px; }
-
-/* biar layar HP gak ada overflow scroll putih */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-/* pastikan background scaling */
-.login-bg {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* responsive gambar */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-min-height: 100dvh; /* dynamic viewport height (baru, lebih stabil di HP) */
-
-
-  /* Clock styles */
-  #local-clock {
-    position: fixed;
-    right: 17px;
-    bottom: 16px;
-    z-index: 9999;
-    color: #ffffff;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-family: "Instrument Serif", serif;
-    font-size: 22px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0);
-  }
-
-#local-clock {
-  position: fixed;
-   right: 17px;
-    bottom: 16px;
-  font-size: 22px;
-  color: rgb(255, 255, 255);
-  z-index: 9999;
-  pointer-events: none; /* biar ga bisa diklik */
-}
-
-/* === Card Grid Layout === */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Selalu 3 kolom */
-  gap: 20px; /* Jarak antar card */
-  max-width: 1000px; /* Biar ga terlalu melebar */
-  margin: 150 flex; /* Tengah di layar */
-}
-
-.card {
-  background: rgba(0, 0, 50, 0.312);
-  color: white;
+.section-header {
   text-align: center;
-  padding: 20px;
-  border-radius: 30px;
-  font-size: 1.2rem;
-  min-height: 20px; /* Sama tinggi */
-  display: flex;
+  margin-bottom: 60px;
+}
+
+.section-title {
+   text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow:   2px 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.section-subtitle {
+   text-align: center;
+  font-size: 1.1rem;
+  color: #ffffff;
+  opacity: 0.8;
+  text-shadow:   2px 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid layout */
+#work .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr); /* jadi 2 kolom */
-  }
-}
-
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr; /* jadi 1 kolom di layar kecil */
-  }
-}
-
-
-  .viewer {
-  position:fixed; inset:0;
-  background:rgba(0,0,0,0.85);
-  display:none;
-  align-items:center; justify-content:center;
-  z-index:200;
-}
-
-.viewer img {
-  max-width:90vw; max-height:90vh;
-  transition:transform 0.2s ease;
-}
-
-.viewer .close-btn {
-  position:absolute; top:20px; right:20px;
-  font-size:24px; cursor:pointer; color:#fff;
-}
-
-  /* Upload previews */
-  .upload-wrap { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:8px; }
-  .upload-preview { width:120px; height:120px; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,0.06); display:none; }
-
-  /* Small responsive tweak */
-  @media (max-width:420px) {
-    .tiktok-wrapper { max-width: 220px; }
-    .local-thumb { width:88px; height:88px; }
-    #local-clock { right:10px; top:64px; font-size:12px; padding:6px 8px; }
-  }
-
-
-  body {
-    margin: 0;
-    background: #111;
-    overflow-x: hidden;
-    font-family: sans-serif;
-    color: #fff;
-  }
-
- .gallery-random {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 60px); /* tinggi layar minus navbar */
-  margin-top: 60px;          /* kasih jarak supaya nggak ketutup navbar */
-  overflow: hidden;          /* cegah item keluar area */
-}
-
-
-  .gallery-item {
-    position: absolute;
-    width: 90px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease;
-  }
-
-  .gallery-item:hover {
-    transform: scale(1.15);
-    filter: brightness(1.2);
-  }
-
-  /* popup modal */
-  .popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    padding: 20px;
-  }
-  .popup.show { display: flex; }
-
-  .popup-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 900px;
-    width: 100%;
-    background: #0c1730;
-    padding: 20px;
-    border-radius: 12px;
-  }
-
-  .popup-content img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-
-  .popup-text {
+/* Card Style */
+#work .card {
+  background: #ffffffcc;
+  border-radius: 20px;
+  padding: 30px 25px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .popup-text h2 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 20px;
-    color: #fff;
-  }
-
- .popup-close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 20px;
+   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+    width: 100%;
+  height: 150px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  background: none;
-  border: none;
-  color: #fff;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#work .card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+#work .card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #171717f7;
+  margin-bottom: 10px;
+}
+
+#work .card p {
+  font-size: 0.95rem;
+  color: #333;
+  opacity: 0.9;
+  line-height: 1.5;
+  max-width: 85%;
+  margin: 0 auto; /* biar rapi di tengah */
 }
 
 
-  /* Normal cursor */
-  cursor: url('images/normal_select.cur') 0 0, auto; 
+/* Responsiveness */
+@media (max-width: 768px) {
+  #work {
+    padding: 60px 5%;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  #work .card {
+    padding: 25px 20px;
+  }
 }
 
-/* link cursor */ 
-a, button {
-  cursor: url('images/link_select.cur') 0 0, pointer;
+
+
+
+        /* popup / xp window */
+        .xp { position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(92%,980px); background:#3939398f; border:1px solid #ffffff00; border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.7); opacity:0; transition: opacity .18s ease, transform .18s ease; z-index:120; }
+        .xp.show { opacity:1; transform: translate(-50%,-50%) scale(1); }
+        .xp.hidden { display: none; }
+        .xp-title { height:50px; display:flex; align-items:center; justify-content:space-between; padding:8px 18px; }
+        .xp-body { padding:14px; }
+
+
+        /* gallery vertical grid safe */
+        .gallery-vertical { display:grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap:12px; max-height:60vh; overflow:auto; padding-right:6px; }
+
+
+        /* viewer modal */
+        .viewer { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0); z-index:200; }
+        .viewer.show { display:flex; }
+
+
+        /* video scroll: keep horizontal scrolling but hide scrollbar and avoid overscroll bounce */
+        .video-scroll { display:flex; gap:14px; overflow-x:auto; overflow-y:hidden; padding:10px 6px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+        .video-card { flex: 0 0 auto; width: 280px; border-radius:0px; overflow:hidden; cursor:pointer; border:0px solid var(--card-bd); background:#1b1b1b00; padding:8px; }
+
+
+        /* running line fix — ensure it doesn't cause horizontal overflow */
+        .running-line { position: fixed; left:0; right:0; bottom:0; width:100%; box-sizing:border-box; white-space:nowrap; overflow:hidden; background:transparent; z-index:9999; }
+        .running-line span { display:inline-block; padding-left:100%; animation: scrollText 70s linear infinite; }
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+
+        /* helper to avoid accidental focus scrolling that jumps content */
+        :focus { outline: none; }
+
+
+        /* responsive tweaks */
+        @media (max-width: 768px) { .grid { margin: 100px auto 50px; } .card { min-width: 46%; } }
+        @media (max-width: 480px) { .grid { margin-top: 90px; } .card { min-width: 100%; } }
+
+            /* === Popup overrides (smaller + responsive + scrollable content) === */
+          /* higher specificity to override original .xp rules */
+          section.xp {
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: min(92%, 820px) !important;        /* constrain width */
+            max-width: 92vw !important;
+            max-height: 85vh !important;              /* allow vertical scroll inside */
+            overflow: hidden !important;
+            border-radius: 12px !important;
+          }
+          section.xp .xp-body {
+            max-height: calc(85vh - 56px) !important; /* leave room for title bar */
+            overflow: auto !important;
+            padding: 12px !important;
+          }
+
+          html, body {
+          margin:0;
+          padding:0;
+          scroll-behavior:smooth; /* biar halus */
+            overflow-x: hidden; /* cegah scroll horizontal */
+        }
+
+
+          /* TikTok responsive wrapper (9:16) */
+          .tiktok-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 320px;          /* preview card size on desktop */
+            aspect-ratio: 9 / 16;      /* keep vertical phone aspect */
+            border-radius: 8px;
+            overflow: hidden;
+            background: #54545497;       /* fallback bg */
+          }
+          /* Ensure blockquote (embed) fits wrapper */
+          .tiktok-wrapper .tiktok-embed,
+          .tiktok-wrapper blockquote {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 !important;
+            border: none;
+          }
+
+          /* Horizontal scroll styling */
+          .video-scroll { gap: 12px; padding: 10px; -webkit-overflow-scrolling: touch; }
+        .thumb {
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.06);
+          margin: 6px;
+          transition: filter 0.3s ease; /* efek halus */
+        }
+
+        .thumb[data-loading="true"] {
+          filter: blur(10px);
+        }
+
+        .local-thumbs-wrap {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
+        /* pastikan iframe dari TikTok ikut responsif */
+        .tiktok-wrapper iframe {
+          position: absolute !important;
+          inset: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          border: none !important;
+        }
+
+
+          /* Re-style open-tiktok button area to fit */
+          .open-tiktok { justify-content:center; margin-top:8px; }
+
+          /* Cursor: keep global default but add class for interactive elements */
+          /* Do NOT set body cursor here (original already sets). We will toggle class on hover via JS */
+          .interactive-cursor {
+            cursor: url('images/link_select.cur') 0 0, pointer !important;
+          }
+
+          /* Make popup close button more clickable on small screens */
+          section.xp .xp-close { width:28px; height:28px; }
+
+        /* biar layar HP gak ada overflow scroll putih */
+        html, body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
+
+        /* pastikan background scaling */
+        .login-bg {
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        /* responsive gambar */
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        min-height: 100dvh; /* dynamic viewport height (baru, lebih stabil di HP) */
+
+
+          /* Clock styles */
+          #local-clock {
+            position: fixed;
+            right: 17px;
+            bottom: 27px;
+            z-index: 9999;
+            color: #ffffff;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0);
+          }
+
+        #local-clock {
+          position: fixed;
+          right: 17px;
+          bottom: 27px;
+          font-size: 22px;
+          font-weight: 600;
+          color: rgb(255, 255, 255);
+          z-index: 9999;
+          pointer-events: none; /* biar ga bisa diklik */
+        }
+
+        /* === Card Grid Layout === */
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr); /* Selalu 3 kolom */
+          gap: 20px; /* Jarak antar card */
+          max-width: 1000px; /* Biar ga terlalu melebar */
+          margin: 150 flex; /* Tengah di layar */
+        }
+
+        .card {
+          background: rgba(0, 0, 0, 0.154);
+          color: white;
+          text-align: center;
+          padding: 20px;
+          border-radius: 30px;
+          font-size: 1.2rem;
+          min-height: 20px; /* Sama tinggi */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: repeat(2, 1fr); /* jadi 2 kolom */
+          }
+        }
+
+        @media (max-width: 480px) {
+          .grid {
+            grid-template-columns: 1fr; /* jadi 1 kolom di layar kecil */
+          }
+        }
+
+
+          .viewer {
+          position:fixed; inset:0;
+          background:rgba(0,0,0,0.85);
+          display:none;
+          align-items:center; justify-content:center;
+          z-index:200;
+        }
+
+        .viewer img {
+          max-width:90vw; max-height:90vh;
+          transition:transform 0.2s ease;
+        }
+
+        .viewer .close-btn {
+          position:absolute; top:20px; right:20px;
+          font-size:24px; cursor:pointer; color:#fff;
+        }
+
+          /* Upload previews */
+          .upload-wrap { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:8px; }
+          .upload-preview { width:120px; height:120px; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,0.06); display:none; }
+
+          /* Small responsive tweak */
+          @media (max-width:420px) {
+            .tiktok-wrapper { max-width: 220px; }
+            .local-thumb { width:88px; height:88px; }
+            #local-clock { right:10px; top:64px; font-size:12px; padding:6px 8px; }
+          }
+
+
+          body {
+            margin: 0;
+            background: #111;
+            overflow-x: hidden;
+            font-family: sans-serif;
+            color: #fff;
+          }
+
+        .gallery-random {
+          position: relative;
+          width: 100%;
+          height: calc(100vh - 60px); /* tinggi layar minus navbar */
+          margin-top: 60px;          /* kasih jarak supaya nggak ketutup navbar */
+          overflow: hidden;          /* cegah item keluar area */
+        }
+
+
+          .gallery-item {
+            position: absolute;
+            width: 90px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+          }
+
+          .gallery-item:hover {
+            transform: scale(1.15);
+            filter: brightness(1.2);
+          }
+
+          /* popup modal */
+          .popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(39, 39, 39, 0.212);
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+          }
+          .popup.show { display: flex; }
+
+          .popup-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 900px;
+            width: 100%;
+            background: #3939398f;
+            padding: 20px;
+            border-radius: 12px;
+          }
+
+          .popup-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+          }
+
+          .popup-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 1.4;
+          }
+
+          .popup-text h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #fff;
+          }
+
+        .popup-close {
+          position: absolute;
+          top: 20px;
+          right: 24px;
+          font-size: 20px;
+          cursor: pointer;
+          background: none;
+          border: none;
+          color: #fff;
+        }
+
+                /* === GLOBAL XP POPUP FONT FIX === */
+        .xp,
+        .xp * {
+          font-family: 'Montserrat', sans-serif !important;
+          color: #ffffff; /* opsional, biar teksnya konsisten */
+        }
+
+        /* Optional: biar judul popup-nya sedikit modern */
+        .xp-title span {
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          font-size: 1.1rem;
+        }
+
+        /* Optional: biar isi popup lebih rapi */
+        .xp-body {
+          line-height: 1.6;
+          font-size: 0.95rem;
+          color: #ffffff;
+        }
+
+        /* Tombol di dalam popup */
+        .xp-body .btn {
+          font-family: 'Montserrat', sans-serif !important;
+          font-weight: 600;
+          border-radius: 8px;
+        }
+
+.xp-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.3rem; /* kecilin dikit */
+  font-weight: 300;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  padding: 5px 9px; /* nambah ruang dari pinggir */
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-    /* NAVBAR (Extra Menu) */
-    .navbar{ position:fixed; inset:0 0 auto 0; height:54px; width:100%; display:flex; align-items:center; justify-content:center; gap:22px; padding:10px 16px; z-index:60;
-      background: linear-gradient(#0000000b,#0000000e); border-bottom:2px solid rgba(0, 0, 0, 0); backdrop-filter: blur(20px); }
-    .nav-item{ font-size:12px; color:#ffffff; text-decoration:none; cursor:pointer; letter-spacing:.3px; padding:6px 10px; border-radius:8px; }
-    .nav-item:hover{ filter: drop-shadow(0 0 20px rgba(17, 0, 255, 0.445)); transform: translateY(-1px); }
+/* tambahin biar span-nya gak nempel juga */
+.xp-title span {
+  display: inline-block;
+  padding-right: 8px; /* biar gak nempel sama tombol close merah */
+  line-height: 0.99; /* kasih sedikit tinggi biar teks bisa nafas */
+}
+
+
+          /* Normal cursor */
+          cursor: url('images/normal_select.cur') 0 0, auto; 
+        }
+
+        /* link cursor */ 
+        a, button {
+          cursor: url('images/link_select.cur') 0 0, pointer;
+        }
+
+        .nav-montserrat {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+        }
+
+            /* NAVBAR (Extra Menu) */
+            .navbar{ position:fixed; inset:0 0 auto 0; height:54px; width:100%; display:flex; align-items:center; justify-content:center; gap:22px; padding:10px 16px; z-index:60;
+              background: linear-gradient(#0000000b,#0000000e); border-bottom:2px solid rgba(0, 0, 0, 0); backdrop-filter: blur(20px); }
+            .nav-item{ font-size:14px; color:#ffffff; text-decoration:none; cursor:pointer; letter-spacing:.3px; padding:6px 10px; border-radius:8px; }
+            .nav-item:hover{ filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.384)); transform: translateY(-1px); }
+        .card {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+        }
 
 
     @keyframes floaty{ 0%,100%{ transform:translateY(-4px) } 50%{ transform:translateY(4px) } }
 
-    .btn{ border:none; background:#052559; color:#ffffff; padding:10px 16px; border-radius:12px; cursor:pointer; font-family:"Instrument Serif", serif; }
-
-/* background terpisah, di-blur */
-.boot::before {content: "";  position: absolute;  inset: 0;  background: url('images/bego.webp');  background-size: cover;  background-repeat: no-repeat;  background-position: center;  filter: blur(20px); /* blur cuma di bg */
-  z-index: -1; /* taruh di belakang konten */
-}
-   .boot{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:#040a14; z-index:80; }
-    .boot.show{ display:flex; animation: fadeIn .15s ease; }
-    @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
-    .retro-loader{ width:440px; max-width:92%; padding:18px; background:#0a1528; border:1px solid var(--card-bd); border-radius:14px; text-align:center; }
-    .progress{ height:14px; border:1px solid #0f356f; border-radius:8px; overflow:hidden; background:#071427; }
-
+    .btn{ border:none; background:#2727277d; color:#ffffff; padding:10px 16px; border-radius:12px; cursor:pointer; font-family:"Montserrat", sans-serif; font-weight: 500;}
 
     /* MAIN */
     main{ position:relative; min-height:100vh; }
@@ -428,35 +565,50 @@ a, button {
     .card:hover{ box-shadow:0 0 18px rgba(0, 95, 75, 0.223), inset 0 0 0 1px rgba(255,255,255,.08); transform: translateY(-3px); }
     .home-hint{ text-align:center; font-size:12px; opacity:.85; margin-bottom:14px }
 
-    /* Permanent contact info */
-    .main-contacts{ position:fixed; left:18px; top:60px; font: size 15px; color:#ffffff; text-align:left; opacity:.92; z-index:20 }
-    .main-contacts a{ color:#ffffff; text-decoration:underline; }
-    
+   /* Permanent contact info */
+    .main-contacts {
+      position: fixed;
+      left: 18px;
+      top: 60px;
+      font-size: 15px;
+      font-weight: 600; /* 🔹 Ketebalan font */
+      color: #ffffff;
+      text-align: left;
+      line-height: 0.4; /* 🔹 Jarak antar baris */
+      opacity: 0.92;
+      z-index: 20;
+    }
+
+    .main-contacts a {
+      color: #ffffff;
+      text-decoration: none;
+      text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.25),
+        0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
 
     /* XP WINDOW */
-    .xp{ position:fixed; left:50%; top:50%; transform:translate(-50%,-46%) scale(.98); width:min(92%,980px); background:#0c1730; border:1px solid #0f356f; border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.7); opacity:0; transition:opacity .2s ease, transform .2s ease; z-index:120; }
+    .xp{ position:fixed; left:50%; top:50%; transform:translate(-50%,-46%) scale(.98); width:min(92%,980px); background:#ffffff; border:0px solid #3939398f; border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.7); opacity:0; transition:opacity .2s ease, transform .2s ease; z-index:120; }
     .xp.show{ opacity:1; transform:translate(-50%,-50%) scale(1); }
     .xp.hidden{ display:none; }
     .xp-title{ height:34px; background:linear-gradient(var(--blue2),var(--blue)); display:flex; align-items:center; justify-content:space-between; padding:0 12px; color:#fff; font-weight:700; letter-spacing:.3px; }
-    .xp-close{ width:20px;height:20px;background:var(--red);border:2px solid #b30000;border-radius:3px;cursor:pointer; }
-    .xp-body{ padding:14px; background:linear-gradient(180deg,#0b1630,#0a152c); }
+    .xp-close{ width:20px;height:20px;background:var(--red);border:2px solid #5b5b5b;border-radius:3px;cursor:pointer; }
+    .xp-body{ padding:14px; background:linear-gradient(180deg,#000000ac,#2e2e2e93); }
     .tabs{ display:flex; gap:10px; margin-bottom:10px; flex-wrap:wrap }
-    .tab{ padding:8px 12px; border:1px solid var(--card-bd); background:#0a1732; border-radius:8px; cursor:pointer; }
-    .tab.active{ box-shadow:0 0 0 2px rgba(120,170,255,.25); }
+    .tab{ padding:8px 12px; border:1px solid var(--card-bd); background:#19191997; border-radius:8px; cursor:pointer; }
+    .tab.active{ box-shadow:0 0 0 2px rgba(255, 255, 255, 0.634); }
     .gallery-vertical{ display:grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap:12px; max-height:60vh; overflow:auto; padding-right:4px }
     .thumb{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; border:1px solid var(--card-bd); cursor:pointer; }
 
     /* IMAGE VIEWER */
-    .viewer{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index:200; }
+    .viewer{ position:fixed; inset:0; background:rgba(0, 0, 0, 0.137); display:none; align-items:center; justify-content:center; z-index:200; }
     .viewer.show{ display:flex; }
     .viewer img{ max-width:88vw; max-height:82vh; user-select:none; }
     .viewer .ctrl{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); display:flex; gap:12px }
-    .viewer .btn{ background:#0b1a3c; }
-    .viewer .arrow{ position:fixed; top:50%; transform:translateY(-50%); font-size:28px; background:#0b1a3c; padding:8px 12px; border-radius:12px; cursor:pointer; }
+    .viewer .btn{ background:#1a1a1a; }
+    .viewer .arrow{ position:fixed; top:50%; transform:translateY(-50%); font-size:28px; background:#191919; padding:8px 12px; border-radius:12px; cursor:pointer; }
     .viewer .left{ left:20px } .viewer .right{ right:20px }
-
-    /* Pixel Alert */
-    .alert{ position:fixed; top:18px; right:18px; background:#0b1a3c; border:1px solid var(--card-bd); color:#fff; padding:10px 14px; border-radius:10px; display:none; z-index:250 }
 
     /* Map */
     #map{ height:60vh; border:1px solid var(--card-bd); border-radius:10px; }
@@ -468,15 +620,15 @@ a, button {
 
     /* Contact form spacing */
     form label{ display:block; font-weight:700; margin:10px 4px 6px; }
-    form input, form textarea{ width:100%; border:1px solid var(--card-bd); background:#04489148; color:#ffffff; padding:12px; border-radius:10px; margin:0 0 10px 0; }
+    form input, form textarea{ width:100%; border:0px solid var(--card-bd); background:#3939398f; color:#8f8f8f63; padding:12px; border-radius:15px; margin:0 0 10px 0; }
     form textarea{ resize:vertical; min-height:120px }
 
     /* --- Video gallery styles --- */
-    .video-player { margin-bottom:12px; min-height:360px; display:none; align-items:center; justify-content:center; background: #081226; border-radius:10px; padding:12px; border:1px solid var(--card-bd); }
+    .video-player { margin-bottom:12px; min-height:360px; display:none; align-items:center; justify-content:center; background: #00000006; border-radius:10px; padding:12px; border:1px solid var(--card-bd); }
     .player-item { display:none; width:100%; max-width: 700px; }
     .player-item.show { display:block; }
     .video-scroll { display:flex; gap:14px; overflow-x:auto; overflow-y:auto;padding:10px 6px; -webkit-overflow-scrolling:touch; }
-    .video-card { flex: 0 0 auto; width:280px; border-radius:10px; overflow:hidden; cursor:pointer; border:1px solid var(--card-bd); background:#061025; padding:8px; }
+    .video-card { flex: 0 0 auto; width:280px; border-radius:10px; overflow:hidden; cursor:pointer; border:1px solid var(--card-bd); background:#19191923; padding:8px; }
     .video-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,.4); }
     .open-tiktok { margin-top:10px; display:flex; gap:8px; align-items:center; justify-content:center; }
     .open-tiktok .btn { padding:8px 12px; border-radius:8px; }
@@ -491,16 +643,18 @@ a, button {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0);
+    background: rgb(0, 0, 0);
     color: #fff;
-    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 590;
+    font-size: 14px;
     padding: 6px 0;
     z-index: 9999;
   }
   .running-line span {
     display: inline-block;
     padding-left: 100%;
-    animation: scrollText 30s linear infinite;
+    animation: scrollText 70s linear infinite;
   }
   @keyframes scrollText {
     0% { transform: translateX(0); }
@@ -525,44 +679,87 @@ a, button {
   </div>
 </div>
 
-  <!-- NAVBAR / EXTRA MENU -->
-  <nav class="navbar">
-    <a class="nav-item" id="goHome"></a>
-    <a class="nav-item" data-open="find">Find Me!</a>
-    <a class="nav-item" data-open="hiring">Hiring</a>
-    <a class="nav-item" data-open="contact">Contact</a>
-    <a class="nav-item" data-open="about">About Me</a>
-    <a class="nav-item" id="messageBtn">Message</a>
-  </nav>
+
+<nav class="navbar" style="text-align:center;">
+  <a class="nav-item nav-montserrat" data-open="find" 
+     style="color:#ffffff; font-weight:700; text-shadow:1px 1px 3px rgba(0,0,0,0.4); margin:0 10px;">
+     Find Me!
+  </a>
+  <a class="nav-item nav-montserrat" data-open="hiring" 
+     style="color:#ffffff; font-weight:700; text-shadow:1px 1px 3px rgba(0,0,0,0.4); margin:0 10px;">
+     Hiring
+  </a>
+  <a class="nav-item nav-montserrat" data-open="contact" 
+     style="color:#ffffff; font-weight:700; text-shadow:1px 1px 3px rgba(0,0,0,0.4); margin:0 10px;">
+     Contact
+  </a>
+  <a class="nav-item nav-montserrat" data-open="about" 
+     style="color:#ffffff; font-weight:700; text-shadow:1px 1px 3px rgba(0,0,0,0.4); margin:0 10px;">
+     About Me
+  </a>
+  <a class="nav-item nav-montserrat" id="messageBtn" 
+     style="color:#ffffff; font-weight:700; text-shadow:1px 1px 3px rgba(0,0,0,0.4); margin:0 10px;">
+     Message
+  </a>
+</nav>
 
 
 <div class="running-line">
-  <span>Zahabien — Creative Visuals  </span>
+  <span>Hi, I’m Zahabi Haq — a young freelance graphic designer based in Surabaya, Indonesia. Currently, I’m pursuing 
+    my first year of study in Media Production. What began as a spark of curiosity in my early teens has grown 
+    into a deep passion for digital design. I’m always open to new opportunities for internships, part-time collaborations, 
+    or creative projects that allow me to grow, gain real-world experience, and expand my global network as a graphic designer 
+    or in any field closely related to visual and media creativity.</span>
 </div>
 
 
-<!-- PAGE 1 (CONTENT) -->
-  <main id="main">
-    <div class="desk">
-      <div class="menu-container">
-        <section class="grid">
-          <div class="card" data-open="clothing">CLOTHING DESIGN</div>
-          <div class="card" data-open="poster">CREATIVE VISUAL DESIGN</div>
-          <div class="card" data-open="ski">HIGH SCHOOL YOUTH ORGANIZATION</div>
-          <div class="card" data-open="environeer">ENVIRONEER</div>
-          <div class="card" data-open="photo">PHOTOGRAPHY</div>
-          <div class="card" data-open="video">VIDEO PRODUCTION IN AKSI 6 PROJECT</div>
-        </section>
+<main id="main">
+  <section id="work" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-subtitle">A collection of projects that represent my design philosophy and approach</p>
+    </div>
+
+    <div class="grid">
+      <div class="card nav-montserrat" data-open="clothing">
+        <h3>Clothing Design</h3>
+        <p>Designing Visuals for Clothing</p>
+      </div>
+      <div class="card nav-montserrat" data-open="poster">
+        <h3>Creative Visual Design</h3>
+        <p>Digital Design and Visual Concepts</p>
+      </div>
+      <div class="card nav-montserrat" data-open="ski">
+        <h3>High School Youth Organization</h3>
+        <p>Community Engagement Projects</p>
+      </div>
+      <div class="card nav-montserrat" data-open="environeer">
+        <h3>Environmental Design</h3>
+        <p>Sustainable Design Initiatives</p>
+      </div>
+      <div class="card nav-montserrat" data-open="photo">
+        <h3>Photography</h3>
+        <p>Visual Storytelling through Lens</p>
+      </div>
+      <div class="card nav-montserrat" data-open="video">
+        <h3>Video Production</h3>
+        <p>Visual Production and Editing Video</p>
       </div>
     </div>
-  </main>
+  </section>
+</main>
 
-  <!-- Permanent Contacts -->
-  <div class="main-contacts">
-    Email : <a href="mailto:haqzahabi@gmail.com">haqzahabi@gmail.com</a><br>
-    Instagram : <a href="https://www.instagram.com/zahabien" target="_blank">@zahabien</a><br>
-    LinkedIn : <a href="https://id.linkedin.com/in/zahabihaq" target="_blank">zahabihaq</a>
+
+
+<!-- Permanent Contacts -->
+<div class="main-contacts nav-montserrat">
+  <div class="contact-card">
+    <p>Email: <a href="mailto:haqzahabi@gmail.com">haqzahabi@gmail.com</a></p>
+    <p>Instagram: <a href="https://www.instagram.com/zahabien" target="_blank">@zahabien</a></p>
+    <p>LinkedIn: <a href="https://id.linkedin.com/in/zahabihaq" target="_blank">zahabihaq</a></p>
   </div>
+</div>
+
 
   <!-- Clock -->
   <div id="local-clock">—:—</div>
@@ -575,10 +772,25 @@ a, button {
     <div class="xp-body"><div class="gallery-vertical" id="gal-clothing"></div></div>
   </section>
 
-  <section class="xp hidden" id="xp-creative">
-    <div class="xp-title"><span>Creative Visual Design (Food Ads, Poster, Digital Imaging, etc)</span><div class="xp-close" data-close></div></div>
-    <div class="xp-body"><div class="gallery-vertical" id="gal-poster"></div></div>
-  </section>
+    <!-- Tabs -->
+      <section class="xp hidden" id="xp-creative">
+  <div class="xp-title">
+    <span>Creative Visual Design</span>
+    <div class="xp-close" data-close></div>
+  </div>
+  <div class="xp-body">
+    <div class="tabs">
+      <div class="tab active" data-tab="creative-poster">Poster / Visual Design</div>
+      <div class="tab" data-tab="creative-logo">Logo Design</div>
+      <div class="tab" data-tab="creative-food">Food Ads</div>
+    </div>
+
+    <!-- Gallery Content -->
+    <div class="gallery-vertical" id="creative-poster"></div>
+    <div class="gallery-vertical" id="creative-logo" style="display:none"></div>
+    <div class="gallery-vertical" id="creative-food" style="display:none"></div>
+  </div>
+</section>
 
 
   <section class="xp hidden" id="xp-ski">
@@ -672,7 +884,7 @@ a, button {
   <div class="xp-body">
     <div style="display:grid; grid-template-columns: 300px 1fr; gap:14px; align-items:start;">
       <!-- FOTO PROFIL -->
-      <div style="border:1px solid var(--card-bd); border-radius:10px; width:100%; aspect-ratio:1/1; background:#0b1a2a; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+      <div style="border:0px solid var(--card-bd); border-radius:10px; width:100%; aspect-ratio:1/1; background:#39393900; display:flex; align-items:center; justify-content:center; overflow:hidden;">
         <img src="images/pfp.webp" id="about-photo" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <!-- DESKRIPSI -->
@@ -688,7 +900,7 @@ a, button {
     </div>
 
        <!-- PERSONAL SKILLS -->
-    <div style="margin-top:14px; border-top:1px solid var(--card-bd); padding-top:12px">
+    <div style="margin-top:14px; border-top:0px solid var(--card-bd); padding-top:12px">
       <div style="font-weight:700; margin-bottom:6px">Personal Skills</div>
       <img src="images/personal.webp" alt="Personal Skills" style="width:100%; height:auto; border-radius:10px; display:block;">
     </div>
@@ -716,8 +928,16 @@ a, button {
   </div>
 
    
-  <div class="alert" id="alert">Message Sent!</div>
-  <div class="alert" id="alert">Thank you for visiting my website, whether you just clicked around or take a look at my works, it truly means a lot to me. I hope you’re having a wonderful day!</div>
+  <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid var(--card-border);">
+  <p style="
+    color: #c5c5c5;
+    margin: 0;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.106);
+  ">
+    © 2025 Zahabien. All rights reserved.
+  </p>
+</footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
@@ -1107,21 +1327,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-  /* ===== 8-bit WebAudio ===== */
-  let ctx; function ac(){ return ctx || (ctx = new (window.AudioContext||window.webkitAudioContext)()); }
-  function beep(freq=200, dur=0.08, type='square', vol=.10){ const a=ac(); const o=a.createOscillator(); const g=a.createGain(); o.type=type; o.frequency.value=freq; g.gain.value=vol; o.connect(g); g.connect(a.destination); o.start(); g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime+dur); o.stop(a.currentTime+dur); }
-  function coin(){ beep(900,.06); setTimeout(()=>beep(1350,.06),70); }
-  function click8(){ beep(520,.05,'square',.18); }
-  function bootSound(){ beep(240,.12); setTimeout(()=>beep(480,.12),120); setTimeout(()=>beep(960,.12),240); }
-  
-  /* ===== Login → Boot → Main ===== */
-  
-  const boot = document.getElementById('boot');
-  const main = document.getElementById('main');
-
- 
-
   document.getElementById("messageBtn").addEventListener("click", function() {
     alert("Thank you for visiting my website, whether you just clicked around or take a look at my works, it truly means a lot to me. I hope you’re having a wonderful day! Sincerely, Zahabi~");
   });
@@ -1192,16 +1397,21 @@ const observer = new IntersectionObserver((entries, obs) => {
   });
 }, { rootMargin: "300px" }); // preload 300px sebelum muncul
 
-// ==== Panggil ====
-{
-  fillGallery('gal-clothing', 'images/clothing', 8);
-  fillGallery('gal-poster', 'images/poster', 94);
-  fillGallery('gal-env', 'images/envi', 11);
-  fillGallery('gal-photo', 'images/foto', 145);
-  fillGallery('ski-internal', 'images/internal', 5);
-  fillGallery('ski-aksi5', 'images/aksi5', 4);
-  fillGallery('ski-aksi6', 'images/aksi6', 30);
-}
+// === GALLERY FILLER ===
+fillGallery('gal-clothing', 'images/clothing', 8);
+
+// Creative Visual Design (3 kategori baru)
+fillGallery('creative-poster', 'images/poster/visual', 67);
+fillGallery('creative-logo', 'images/poster/logo', 20);
+fillGallery('creative-food', 'images/poster/food', 10);
+
+// Lainnya tetap sama
+fillGallery('gal-env', 'images/envi', 11);
+fillGallery('gal-photo', 'images/foto', 152);
+fillGallery('ski-internal', 'images/ski/internal', 5);
+fillGallery('ski-aksi5', 'images/ski/aksi5', 4);
+fillGallery('ski-aksi6', 'images/ski/aksi6', 30);
+
 
   // SKI tabs
   document.querySelectorAll('#xp-ski .tab').forEach(t=>{
@@ -1213,7 +1423,19 @@ const observer = new IntersectionObserver((entries, obs) => {
       coin();
     });
   });
+
+ // Visual tabs
+  document.querySelectorAll('#xp-creative .tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('#xp-creative .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      ['creative-poster','creative-logo','creative-food'].forEach(id=> document.getElementById(id).style.display='none');
+      document.getElementById(t.dataset.tab).style.display='grid';
+      coin();
+    });
+  });
   
+
   /* ===== Image Viewer (zoom/slide) ===== */
   const viewer = document.getElementById('viewer');
   const viewImg = document.getElementById('viewImg');
